@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# PyCharm project
+.idea/
+
+# Pipenv lock
+Pipfile.lock
