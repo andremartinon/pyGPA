@@ -27,12 +27,14 @@ class GPA:
         modulus_second_half = np.flip(modulus[half_size:])
         modulus = np.abs(modulus_first_half - modulus_second_half)
         modulus[modulus <= self.modulus_tolerance] = 0
+        modulus[np.isnan(modulus)] = 0
 
         phases = np.ravel(self.phases)
         phases_first_half = phases[0:half_size+odd]
         phases_second_half = np.flip(phases[half_size:])
         phases = np.abs(phases_first_half) + np.abs(phases_second_half)
         phases[phases >= (np.pi - self.phases_tolerance)] = 0
+        phases[np.isnan(phases)] = 0
 
         asymmetry_matrix = modulus + phases
         asymmetry_matrix = np.concatenate((
